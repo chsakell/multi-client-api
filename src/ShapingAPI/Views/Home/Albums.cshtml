@@ -1,0 +1,99 @@
+﻿<div ng-controller="albumsCtrl">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums" target="_blank">api/albums</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbums" />
+                    <perfect-scrollbar ng-show="apiAlbums" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbums' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums?props=artistname,title,track" target="_blank">api/albums?props=artistname,title,track</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsPropsAll" />
+                    <perfect-scrollbar ng-show="apiAlbumsPropsAll" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsPropsAll' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums?props=artistname,title,track&page=2&pagesize=10" target="_blank">api/albums?props=artistname,title,track&page=2&pagesize=10</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsPropsAllPaged" />
+                    <perfect-scrollbar ng-show="apiAlbumsPropsAllPaged" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsPropsAllPaged' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums?props=artistname,title,track(bytes;name;unitprice)" target="_blank">api/albums?props=artistname,title,track(bytes;name;unitprice)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsPropsAllParseTrack" />
+                    <perfect-scrollbar ng-show="apiAlbumsPropsAllParseTrack" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsPropsAllParseTrack' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums/1" target="_blank">api/albums/1</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsOne" />
+                    <perfect-scrollbar ng-show="apiAlbumsOne" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsOne' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/albums/1?props=artistname,title,track(composer;name)" target="_blank">api/albums/1?props=artistname,title,track(composer;name)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsOneProps" />
+                    <perfect-scrollbar ng-show="apiAlbumsOneProps" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsOneProps' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/app/controllers/albumsCtrl.js"></script>
+}

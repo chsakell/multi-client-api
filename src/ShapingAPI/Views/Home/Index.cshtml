@@ -1,0 +1,85 @@
+﻿<div ng-controller="tracksCtrl">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="api/tracks" target="_blank">api/tracks</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiTracks" />
+                    <perfect-scrollbar ng-show="apiTracks" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiTracks' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="api/tracks?page=2&pagesize=100" target="_blank">api/tracks?page=2&pagesize=100</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiTracksPaged" />
+                    <perfect-scrollbar ng-show="apiTracksPaged" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiTracksPaged' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="api/tracks?props=bytes,composer,milliseconds" target="_blank">api/tracks?props=bytes,composer,milliseconds</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiTracksAll" />
+                    <perfect-scrollbar ng-show="apiTracksAll" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiTracksAll' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="api/tracks/1" target="_blank">api/tracks/1</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiTracksOne" />
+                    <perfect-scrollbar ng-show="apiTracksOne" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiTracksOne' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="api/tracks/1?props=bytes,milliseconds,name" target="_blank">api/tracks/1?props=bytes,milliseconds,name</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiTracksOneProps" />
+                    <perfect-scrollbar ng-show="apiTracksOneProps" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiTracksOneProps' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/app/controllers/tracksctrl.js"></script>
+}

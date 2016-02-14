@@ -1,0 +1,14 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+    "dependencies": {
+        "angular": "1.5.0",
+        "bootstrap": "3.3.6",
+        "font-awesome": "4.5.0",
+        "angular-perfect-scrollbar": "0.0.4",
+        "ng-json-prettifier": "*"
+    },
+  "resolutions": {
+    "angular": "1.5.0"
+  }
+}

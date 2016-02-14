@@ -1,0 +1,99 @@
+﻿<div ng-controller="customersCtrl">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers" target="_blank">api/customers</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomers" />
+                    <perfect-scrollbar ng-show="apiCustomers" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomers' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers?props=city,company,firstname,lastname,Invoice" target="_blank">api/customers?props=city,company,firstname,lastname,Invoice</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomersPropsOne" />
+                    <perfect-scrollbar ng-show="apiCustomersPropsOne" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomersPropsOne' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers?props=firstname,lastname,address,contact" target="_blank">api/customers?props=firstname,lastname,address,contact</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomersPropsAddressContact" />
+                    <perfect-scrollbar ng-show="apiCustomersPropsAddressContact" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomersPropsAddressContact' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers?props=firstname,lastname,Invoice(billingcity;total)&page=4&pagesize=5" target="_blank">api/customers?props=firstname,lastname,Invoice(billingcity;total)&page=4&pagesize=5</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomersPropsOnePaged" />
+                    <perfect-scrollbar ng-show="apiCustomersPropsOnePaged" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomersPropsOnePaged' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers?props=customerid,city,company,firstname,lastname,Invoice(billingaddress;billingcity;total;invoiceline)" target="_blank">api/customers?props=customerid,city,company,firstname,lastname, Invoice(billingaddress;billingcity;total;invoiceline)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomersPropsTwo" />
+                    <perfect-scrollbar ng-show="apiCustomersPropsTwo" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomersPropsTwo' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/customers/1?props=customerid,city,company,firstname,lastname,Invoice(billingaddress;billingcity;total; invoiceline(invoicelineid;quantity;trackid))" target="_blank">api/customers/1?props=customerid,city,company,firstname,lastname, Invoice(billingaddress;billingcity;total; invoiceline(invoicelineid;quantity;trackid))</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiCustomersPropsThree" />
+                    <perfect-scrollbar ng-show="apiCustomersPropsThree" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiCustomersPropsThree' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/app/controllers/customersCtrl.js"></script>
+}

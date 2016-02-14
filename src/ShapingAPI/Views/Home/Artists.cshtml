@@ -1,0 +1,85 @@
+﻿<div ng-controller="artistsCtrl">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/artists" target="_blank">api/artists</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiArtists" />
+                    <perfect-scrollbar ng-show="apiArtists" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiArtists' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/artists?props=name,album(albumid;title)" target="_blank">api/artists?props=name,album(albumid;title)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiArtistsPropsOne" />
+                    <perfect-scrollbar ng-show="apiArtistsPropsOne" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiArtistsPropsOne' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/artists?props=name,album(albumid;title;track)" target="_blank">api/artists?props=name,album(albumid;title;track)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiAlbumsPropsTwo" />
+                    <perfect-scrollbar ng-show="apiAlbumsPropsTwo" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiAlbumsPropsTwo' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/artists/1?props=name,album(albumid;title;track)" target="_blank">api/artists/1?props=name,album(albumid;title;track)</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiArtistsPropsThree" />
+                    <perfect-scrollbar ng-show="apiArtistsPropsThree" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiArtistsPropsThree' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="/api/artists/1?props=name,album(albumid;title;track(bytes;composer;unitprice))" target="_blank">api/artists/1?props=name,album(albumid;title;track(bytes;composer;unitprice))</a></h3>
+                </div>
+
+                <div class="panel-body">
+                    <img src="~/images/spinner.gif" class="spinner" ng-show="!apiArtistsPropsFour" />
+                    <perfect-scrollbar ng-show="apiArtistsPropsFour" class="api-box" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
+                        <pretty-json json='apiArtistsPropsFour' replace-key='replaceKey' replace-value='replaceValue' indent-key='4' indent-value='indentValue'></pretty-json>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/app/controllers/artistsCtrl.js"></script>
+}

@@ -1,0 +1,38 @@
+﻿body {
+    background-color: #31708f;
+}
+
+.api-box {
+    white-space: pre-line;
+    height: 200px;
+    overflow-y: hidden;
+    position: relative;
+    background-color: white;
+    margin: 6px;
+}
+
+pre {
+    border: none !important;
+    background-color: white !important;
+}
+
+.spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-image {
+    height: 70px;
+}
+
+.icon::before {
+    display: inline-block;
+    margin-right: .5em;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
