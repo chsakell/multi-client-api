@@ -36,7 +36,7 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _artists = _artistRepository.LoadAll().Skip(page).Take(pageSize);
+                var _artists = _artistRepository.LoadAll().Skip((page - 1) * pageSize).Take(pageSize);
 
                 var _artistsVM = Mapper.Map<IEnumerable<Artist>, IEnumerable<ArtistViewModel>>(_artists);
 

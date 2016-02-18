@@ -37,7 +37,7 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _invoices = _invoiceRepository.LoadAll().Skip(page).Take(pageSize);
+                var _invoices = _invoiceRepository.LoadAll().Skip((page - 1) * pageSize).Take(pageSize);
 
                 var _invoicesVM = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceViewModel>>(_invoices);
 

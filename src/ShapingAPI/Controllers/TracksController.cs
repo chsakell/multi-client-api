@@ -39,7 +39,7 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _tracks = _trackRepository.GetAll(includeProperties).Skip(page).Take(pageSize);
+                var _tracks = _trackRepository.GetAll(includeProperties).Skip((page - 1) * pageSize).Take(pageSize);
 
                 var _tracksVM = Mapper.Map<IEnumerable<Track>, IEnumerable<TrackViewModel>>(_tracks);
 

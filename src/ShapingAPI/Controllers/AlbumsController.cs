@@ -39,7 +39,7 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _albums = _albumRepository.GetAll(includeProperties).Skip(page).Take(pageSize);
+                var _albums = _albumRepository.GetAll(includeProperties).Skip((page - 1) * pageSize).Take(pageSize);
 
                 var _albumsVM = Mapper.Map<IEnumerable<Album>, IEnumerable<AlbumViewModel>>(_albums);
 

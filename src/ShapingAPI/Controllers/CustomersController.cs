@@ -37,7 +37,7 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _customers = _customerRepository.LoadAll().Skip(page).Take(pageSize);
+                var _customers = _customerRepository.LoadAll().Skip((page - 1) * pageSize).Take(pageSize);
 
                 var _customersVM = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(_customers);
 
