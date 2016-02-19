@@ -41,15 +41,7 @@ namespace ShapingAPI.Controllers
 
                 var _invoicesVM = Mapper.Map<IEnumerable<Invoice>, IEnumerable<InvoiceViewModel>>(_invoices);
 
-                string _serializedInvoices = JsonConvert.SerializeObject(_invoicesVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
-
-                JToken _jtoken = JToken.Parse(_serializedInvoices);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+                JToken _jtoken = TokenService.CreateJToken(_invoicesVM, props);
 
                 return Ok(_jtoken);
             }
@@ -73,15 +65,8 @@ namespace ShapingAPI.Controllers
 
                 var _invoiceVM = Mapper.Map<Invoice, InvoiceViewModel>(_invoice);
 
-                string _serializedInvoice = JsonConvert.SerializeObject(_invoiceVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+                JToken _jtoken = TokenService.CreateJToken(_invoiceVM, props);
 
-                JToken _jtoken = JToken.Parse(_serializedInvoice);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
                 return Ok(_jtoken);
             }
             catch (Exception ex)

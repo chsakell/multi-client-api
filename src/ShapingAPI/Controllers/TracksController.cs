@@ -43,15 +43,7 @@ namespace ShapingAPI.Controllers
 
                 var _tracksVM = Mapper.Map<IEnumerable<Track>, IEnumerable<TrackViewModel>>(_tracks);
 
-                string _serializedTracks = JsonConvert.SerializeObject(_tracksVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
-
-                JToken _jtoken = JToken.Parse(_serializedTracks);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+                JToken _jtoken = TokenService.CreateJToken(_tracksVM, props);
 
                 return Ok(_jtoken);
             }
@@ -77,15 +69,8 @@ namespace ShapingAPI.Controllers
 
                 var _trackVM = Mapper.Map<Track, TrackViewModel>(_track);
 
-                string _serializedTrack = JsonConvert.SerializeObject(_trackVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+                JToken _jtoken = TokenService.CreateJToken(_trackVM, props);
 
-                JToken _jtoken = JToken.Parse(_serializedTrack);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
                 return Ok(_jtoken);
             }
             catch (Exception ex)

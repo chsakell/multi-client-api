@@ -43,15 +43,7 @@ namespace ShapingAPI.Controllers
 
                 var _albumsVM = Mapper.Map<IEnumerable<Album>, IEnumerable<AlbumViewModel>>(_albums);
 
-                string _serializedAlbums = JsonConvert.SerializeObject(_albumsVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
-
-                JToken _jtoken = JToken.Parse(_serializedAlbums);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+                JToken _jtoken = TokenService.CreateJToken(_albumsVM, props);
 
                 return Ok(_jtoken);
             }
@@ -75,15 +67,8 @@ namespace ShapingAPI.Controllers
 
                 var _albumVM = Mapper.Map<Album, AlbumViewModel>(_album);
 
-                string _serializedAlbum = JsonConvert.SerializeObject(_albumVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+                JToken _jtoken = TokenService.CreateJToken(_albumVM, props);
 
-                JToken _jtoken = JToken.Parse(_serializedAlbum);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
                 return Ok(_jtoken);
             }
             catch (Exception ex)

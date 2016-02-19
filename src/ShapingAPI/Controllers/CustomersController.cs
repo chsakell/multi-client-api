@@ -41,15 +41,7 @@ namespace ShapingAPI.Controllers
 
                 var _customersVM = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(_customers);
 
-                string _serializedCustomers = JsonConvert.SerializeObject(_customersVM, Formatting.None,
-                new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
-
-                JToken _jtoken = JToken.Parse(_serializedCustomers);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+                JToken _jtoken = TokenService.CreateJToken(_customersVM, props);
 
                 return Ok(_jtoken);
             }
@@ -73,15 +65,8 @@ namespace ShapingAPI.Controllers
 
                 var _customerVM = Mapper.Map<Customer, CustomerViewModel>(_customer);
 
-                string _serializedCustomer = JsonConvert.SerializeObject(_customerVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+                JToken _jtoken = TokenService.CreateJToken(_customerVM, props);
 
-                JToken _jtoken = JToken.Parse(_serializedCustomer);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
                 return Ok(_jtoken);
             }
             catch (Exception ex)

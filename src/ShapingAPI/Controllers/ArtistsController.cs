@@ -40,15 +40,7 @@ namespace ShapingAPI.Controllers
 
                 var _artistsVM = Mapper.Map<IEnumerable<Artist>, IEnumerable<ArtistViewModel>>(_artists);
 
-                string _serializedArtists = JsonConvert.SerializeObject(_artistsVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
-
-                JToken _jtoken = JToken.Parse(_serializedArtists);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+                JToken _jtoken = TokenService.CreateJToken(_artistsVM, props);
 
                 return Ok(_jtoken);
             }
@@ -72,15 +64,8 @@ namespace ShapingAPI.Controllers
 
                 var _artistVM = Mapper.Map<Artist, ArtistViewModel>(_artist);
 
-                string _serializedArtist = JsonConvert.SerializeObject(_artistVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+                JToken _jtoken = TokenService.CreateJToken(_artistVM, props);
 
-                JToken _jtoken = JToken.Parse(_serializedArtist);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
                 return Ok(_jtoken);
             }
             catch (Exception ex)
