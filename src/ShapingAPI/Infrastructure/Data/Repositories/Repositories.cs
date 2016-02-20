@@ -12,6 +12,24 @@ namespace ShapingAPI.Infrastructure.Data.Repositories
         public AlbumRepository(ChinookContext context)
             : base(context)
         { }
+
+        public IEnumerable<Album> LoadAll()
+        {
+            IQueryable<Album> query = this._dbSet;
+
+            query = query.Include(a => a.Track);
+
+            return query.ToList();
+        }
+
+        public Album Load(int artistId)
+        {
+            IQueryable<Album> query = this._dbSet;
+
+            query = query.Include(a => a.Track);
+
+            return query.FirstOrDefault(a => a.AlbumId == artistId);
+        }
     }
 
     public class ArtistRepository : Repository<Artist>, IArtistRepository

@@ -19,7 +19,6 @@ namespace ShapingAPI.Controllers
     {
         #region Properties
         private readonly ICustomerRepository _customerRepository;
-        private List<string> _properties = new List<string>();
         private const int maxSize = 50;
         #endregion
 
@@ -27,8 +26,6 @@ namespace ShapingAPI.Controllers
         public CustomersController(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
-
-            _properties = new List<string>();
         }
         #endregion
 

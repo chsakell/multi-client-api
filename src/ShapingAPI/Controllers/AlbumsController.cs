@@ -19,7 +19,6 @@ namespace ShapingAPI.Controllers
     {
         #region Properties
         private readonly IAlbumRepository _albumRepository;
-        private List<string> _properties = new List<string>();
         private Expression<Func<Album, object>>[] includeProperties;
         private const int maxSize = 50;
         #endregion
@@ -29,7 +28,6 @@ namespace ShapingAPI.Controllers
         {
             _albumRepository = albumRepository;
 
-            _properties = new List<string>();
             includeProperties = Expressions.LoadAlbumNavigations();
         }
         #endregion
@@ -39,7 +37,9 @@ namespace ShapingAPI.Controllers
         {
             try
             {
-                var _albums = _albumRepository.GetAll(includeProperties).Skip((page - 1) * pageSize).Take(pageSize);
+                var _albums = _albumRepository.LoadAll().Skip((page - 1) * pageSize).Take(pageSize);
+
+                var test = _albums.ToList();
 
                 var _albumsVM = Mapper.Map<IEnumerable<Album>, IEnumerable<AlbumViewModel>>(_albums);
 

@@ -19,7 +19,6 @@ namespace ShapingAPI.Controllers
     {
         #region Properties
         private readonly ITrackRepository _trackRepository;
-        private List<string> _properties = new List<string>();
         private Expression<Func<Track, object>>[] includeProperties;
         private const int maxSize = 50;
         #endregion
@@ -29,7 +28,6 @@ namespace ShapingAPI.Controllers
         {
             _trackRepository = trackRepository;
 
-            _properties = new List<string>();
             includeProperties = Expressions.LoadTrackNavigations();
         }
         #endregion

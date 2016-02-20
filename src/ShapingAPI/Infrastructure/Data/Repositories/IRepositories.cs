@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ShapingAPI.Infrastructure.Data.Repositories
 {
-    public interface IAlbumRepository : IRepository<Album> { }
+    public interface IAlbumRepository : IRepository<Album> {
+        IEnumerable<Album> LoadAll();
+        Album Load(int albumId);
+    }
 
     public interface IArtistRepository : IRepository<Artist>
     {
