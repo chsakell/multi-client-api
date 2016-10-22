@@ -158,3 +158,5 @@ If you think that any information you obtained here is worth of some money and a
 </tr>
 </tbody>
 </table>
+<h2>License</h2>
+Code released under the <a href="https://github.com/chsakell/multi-client-api/blob/master/licence" target="_blank"> MIT license</a>.
