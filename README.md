@@ -6,6 +6,7 @@ The project introduces a <a href="https://github.com/chsakell/multi-client-api/b
 <li>Usage</li>
 </ul>
 Assuming the result of the resource uri <strong><i>/api/tracks/1</i></strong> is the following:
+
 ```
 {
   "TrackId": 1,
@@ -80,6 +81,7 @@ Properties in navigations should be semicolon (;) separated inside parethensis.
 <ul>
 <li>Example in API Controller</li>
 </ul>
+
 ```
 var _tracks = _trackRepository.GetAll(includeProperties).Skip(page).Take(pageSize);
 
