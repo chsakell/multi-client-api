@@ -7,7 +7,7 @@ The project introduces a <a href="https://github.com/chsakell/multi-client-api/b
 </ul>
 Assuming the result of the resource uri <strong><i>/api/tracks/1</i></strong> is the following:
 
-```
+```javascript
 {
   "TrackId": 1,
   "AlbumId": 1,
@@ -21,7 +21,7 @@ Assuming the result of the resource uri <strong><i>/api/tracks/1</i></strong> is
 }
 ```
 You can request only specific properties of that resource by making the request <strong><i>/api/tracks/1?props=bytes,milliseconds,name</i></strong>
-```
+```javascript
 {
   "Bytes": 11170334,
   "Milliseconds": 343719,
@@ -29,7 +29,7 @@ You can request only specific properties of that resource by making the request 
 }
 ```
 The algorithm supports nested navigation properties as well. If <strong><i>/api/albums/1</i></strong> returns..
-```
+```javascript
 {
   "AlbumId": 1,
   "ArtistName": "AC/DC",
@@ -61,7 +61,7 @@ The algorithm supports nested navigation properties as well. If <strong><i>/api/
 }
 ```
 Then <strong><i>/api/albums/1?props=artistname,title,track(composer;name)</i></strong> should return the following:
-```
+```javascript
 {
   "ArtistName": "AC/DC",
   "Title": "For Those About To Rock We Salute You",
@@ -82,22 +82,22 @@ Properties in navigations should be semicolon (;) separated inside parethensis.
 <li>Example in API Controller</li>
 </ul>
 
-```
+```javascript
 var _tracks = _trackRepository.GetAll(includeProperties).Skip(page).Take(pageSize);
 
-                var _tracksVM = Mapper.Map<IEnumerable<Track>, IEnumerable<TrackViewModel>>(_tracks);
+var _tracksVM = Mapper.Map<IEnumerable<Track>, IEnumerable<TrackViewModel>>(_tracks);
 
-                string _serializedTracks = JsonConvert.SerializeObject(_tracksVM, Formatting.None,
-                    new JsonSerializerSettings()
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                    });
+string _serializedTracks = JsonConvert.SerializeObject(_tracksVM, Formatting.None,
+    new JsonSerializerSettings()
+    {
+        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+    });
 
-                JToken _jtoken = JToken.Parse(_serializedTracks);
-                if (!string.IsNullOrEmpty(props))
-                    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
+JToken _jtoken = JToken.Parse(_serializedTracks);
+if (!string.IsNullOrEmpty(props))
+    Utils.FilterProperties(_jtoken, props.ToLower().Split(',').ToList());
 
-                return Ok(_jtoken);
+return Ok(_jtoken);
 ```
 <p>
 The project is built in Visual Studio 2015 and ASP.NET Core but the technique and the method can be easily integrated in any version of ASP.NET API. In case you want to run the <i>ShapingAPI</i> application:
